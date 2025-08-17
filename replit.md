@@ -6,6 +6,15 @@ Prompt Maker is a Chrome extension designed to help users write better prompts f
 
 Preferred communication style: Simple, everyday language.
 
+# Enhancement Ideas for Increased Usage
+
+The user is interested in expanding the extension's features to attract more users. Key areas for improvement include:
+- Prompt history and favorites
+- More template categories 
+- AI platform integration
+- Social features
+- Analytics and insights
+
 # System Architecture
 
 ## Frontend Architecture
