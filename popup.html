@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Maker</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="logo">✨ Prompt Maker</h1>
+            <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">🌙</button>
+        </header>
+
+        <!-- Usage Counter -->
+        <div class="usage-counter" id="usageCounter">
+            <span>Daily prompts used: <span id="usageCount">0</span>/5</span>
+        </div>
+
+        <!-- Step 1: Input -->
+        <div class="step active" id="step1">
+            <h2>What do you want to ask an AI?</h2>
+            <textarea 
+                id="promptInput" 
+                placeholder="Type your raw idea..." 
+                rows="4"
+                maxlength="2000"
+            ></textarea>
+            <div class="char-count">
+                <span id="charCount">0</span>/2000
+            </div>
+            <button class="btn btn-primary" id="nextBtn" disabled>
+                Next →
+            </button>
+        </div>
+
+        <!-- Step 2: Style Selection -->
+        <div class="step" id="step2">
+            <h2>How should this be explained?</h2>
+            <div class="style-options">
+                <label class="style-option" for="simple">
+                    <input type="radio" name="style" value="simple" id="simple">
+                    <div class="option-card">
+                        <div class="option-icon">👶</div>
+                        <div class="option-title">Simple</div>
+                        <div class="option-desc">Short, plain language</div>
+                    </div>
+                </label>
+
+                <label class="style-option" for="professional">
+                    <input type="radio" name="style" value="professional" id="professional">
+                    <div class="option-card">
+                        <div class="option-icon">👔</div>
+                        <div class="option-title">Professional</div>
+                        <div class="option-desc">Polished, business-like</div>
+                    </div>
+                </label>
+
+                <label class="style-option" for="technical">
+                    <input type="radio" name="style" value="technical" id="technical">
+                    <div class="option-card">
+                        <div class="option-icon">👩‍💻</div>
+                        <div class="option-title">Technical</div>
+                        <div class="option-desc">Structured, detailed</div>
+                    </div>
+                </label>
+
+                <label class="style-option" for="custom">
+                    <input type="radio" name="style" value="custom" id="custom">
+                    <div class="option-card">
+                        <div class="option-icon">✏️</div>
+                        <div class="option-title">Custom</div>
+                        <div class="option-desc">Your own style</div>
+                    </div>
+                </label>
+            </div>
+
+            <div class="custom-input" id="customInput" style="display: none;">
+                <textarea 
+                    id="customStyle" 
+                    placeholder="Describe your preferred style..."
+                    rows="2"
+                ></textarea>
+            </div>
+
+            <div class="step-buttons">
+                <button class="btn btn-secondary" id="backBtn1">
+                    ← Back
+                </button>
+                <button class="btn btn-primary" id="makePromptBtn" disabled>
+                    Make My Prompt →
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 3: Output -->
+        <div class="step" id="step3">
+            <h2>Your optimized prompt (ready to copy)</h2>
+            <div class="output-container">
+                <textarea 
+                    id="outputPrompt" 
+                    readonly 
+                    rows="6"
+                ></textarea>
+                <div class="output-stats">
+                    <span id="outputLength">0 characters</span>
+                    <span id="improvement">Enhanced</span>
+                </div>
+            </div>
+
+            <div class="step-buttons">
+                <button class="btn btn-secondary" id="backBtn2">
+                    ← Back
+                </button>
+                <button class="btn btn-primary" id="copyBtn">
+                    📋 Copy Prompt
+                </button>
+            </div>
+        </div>
+
+        <!-- Upgrade Modal -->
+        <div class="modal-overlay" id="upgradeModal" style="display: none;">
+            <div class="modal">
+                <h2>Upgrade for Unlimited Prompts 🚀</h2>
+                <p>You've used your 5 free daily prompts. Upgrade to Pro for unlimited access.</p>
+                
+                <div class="pricing-options">
+                    <div class="pricing-card">
+                        <h3>Monthly</h3>
+                        <div class="price">$15<span>/month</span></div>
+                        <button class="btn btn-primary" onclick="handleUpgrade('monthly')">
+                            Choose Monthly
+                        </button>
+                    </div>
+                    
+                    <div class="pricing-card featured">
+                        <div class="badge">Save 45%</div>
+                        <h3>Yearly</h3>
+                        <div class="price">$100<span>/year</span></div>
+                        <button class="btn btn-primary" onclick="handleUpgrade('yearly')">
+                            Choose Yearly
+                        </button>
+                    </div>
+                </div>
+
+                <button class="modal-close" id="closeModal">×</button>
+            </div>
+        </div>
+
+        <!-- Success Toast -->
+        <div class="toast" id="toast" style="display: none;">
+            <span id="toastMessage"></span>
+        </div>
+    </div>
+
+    <script src="templates.js"></script>
+    <script src="popup.js"></script>
+</body>
+</html>
