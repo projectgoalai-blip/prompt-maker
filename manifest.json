@@ -5,7 +5,8 @@
   "description": "Enhance your AI prompts with smart templates and style selection",
   "permissions": [
     "storage",
-    "clipboardWrite"
+    "clipboardWrite",
+    "alarms"
   ],
   "action": {
     "default_popup": "popup.html",

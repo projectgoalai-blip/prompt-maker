@@ -51,21 +51,30 @@ chrome.runtime.onStartup.addListener(async () => {
     }
 });
 
-// Handle alarm events (for daily reset)
-chrome.alarms.onAlarm.addListener(async (alarm) => {
-    try {
-        if (alarm.name === 'dailyReset') {
-            console.log('Performing daily usage reset');
-            await resetDailyUsage();
+// Handle alarm events (for daily reset) - only if alarms API is available
+if (chrome.alarms && chrome.alarms.onAlarm) {
+    chrome.alarms.onAlarm.addListener(async (alarm) => {
+        try {
+            if (alarm.name === 'dailyReset') {
+                console.log('Performing daily usage reset');
+                await resetDailyUsage();
+            }
+        } catch (error) {
+            console.error('Error handling alarm:', error);
         }
-    } catch (error) {
-        console.error('Error handling alarm:', error);
-    }
-});
+    });
+} else {
+    console.log('Chrome alarms API not available - using manual daily reset check');
+}
 
-// Set up daily reset alarm
+// Set up daily reset alarm - only if alarms API is available
 async function setupDailyResetAlarm() {
     try {
+        if (!chrome.alarms || !chrome.alarms.create) {
+            console.log('Chrome alarms API not available - skipping alarm setup');
+            return;
+        }
+        
         // Clear any existing alarm
         await chrome.alarms.clear('dailyReset');
         
