@@ -1,0 +1,195 @@
+You are an expert Chrome extension developer. Build me a Chrome extension called “Prompt Maker.” Below are the full requirements. Follow them exactly.
+
+
+---
+
+🎯 Product Vision
+
+“Prompt Maker” is a universal Chrome extension that helps users write better prompts for any AI (ChatGPT, Claude, Gemini, MidJourney, etc.).
+
+User types a raw idea.
+
+Extension asks: “How should this be written?”
+
+User chooses from Simple / Professional / Technical / Custom.
+
+Extension rewrites prompt using pre-defined smart templates.
+
+If the prompt is too short, extension automatically expands it into a detailed version.
+
+User can copy the improved prompt and paste it into any AI tool.
+
+
+👉 Goal: Become the go-to helper for writing clear, powerful prompts — even from just a few words.
+
+
+---
+
+⚡ Core Features
+
+1. Prompt Input
+
+Big text box where users type/paste their idea.
+
+
+
+2. Style/Audience Choice
+
+Options:
+
+👶 Simple → short, plain language.
+
+👔 Professional → polished, business-like.
+
+👩‍💻 Technical → structured, detailed.
+
+✏ Custom → user types their own style.
+
+
+
+
+3. Smart Auto-Expander
+
+If input is very short (e.g. “blog about AI”), extension auto-expands into a longer, usable prompt.
+
+Example:
+
+Input: “Blog about AI”
+
+Expanded: “Write a blog post about artificial intelligence trends in 2025. Include real-world examples, explain benefits for businesses, and keep the tone simple for beginners.”
+
+
+
+
+4. Output Page
+
+Shows rewritten or expanded prompt.
+
+Buttons:
+
+Copy Prompt
+
+(Optional future: Save Favorite Prompt).
+
+
+
+
+5. Free vs Pro
+
+Free = 5 prompts/day.
+
+Pro = unlimited prompts.
+
+Pricing: $15/month or $100/year.
+
+Payments handled via Stripe.
+
+
+
+
+
+---
+
+🎨 UI / UX Flow
+
+Step 1 – Input
+
+Header: “What do you want to ask an AI?”
+
+Large textbox (placeholder: Type your raw idea…).
+
+Button: Next →
+
+
+Step 2 – Choose Style
+
+Header: “How should this be explained?”
+
+Options with icons:
+
+👶 Simple
+
+👔 Professional
+
+👩‍💻 Technical
+
+✏ Custom (text field).
+
+
+Button: Make My Prompt →
+
+
+Step 3 – Output
+
+Header: “Your optimized prompt (ready to copy)”
+
+Textbox with rewritten/expanded prompt.
+
+Button: Copy Prompt
+
+
+Upgrade Modal (when free limit reached)
+
+Title: “Upgrade for Unlimited Prompts 🚀”
+
+Text: “You’ve used your 5 free daily prompts. Upgrade to Pro for unlimited.”
+
+Buttons:
+
+$15/month
+
+$100/year (save 45%)
+
+
+
+
+---
+
+🛠 Developer Notes
+
+Build with Chrome Manifest V3.
+
+No AI API integration — expansion/rewriting done with pre-defined templates + string rules.
+
+Save daily usage in localStorage (reset at midnight).
+
+UI must be clean, minimalist, fast.
+
+Support light/dark mode.
+
+
+
+---
+
+📌 Deliverables
+
+1. Working Chrome extension (Manifest V3).
+
+
+2. Popup flow: Input → Choose Style → Output.
+
+
+3. Auto-expander for very short prompts.
+
+
+4. Daily free limit + upgrade modal.
+
+
+5. Stripe payment integration.
+
+
+6. Copy-to-clipboard functionality.
+
+
+7. Documentation: how to install + publish on Chrome Web Store.
+
+
+
+
+---
+
+✅ This makes the extension useful + unique:
+
+Not just rewriting.
+
+It boosts short prompts into powerful ones automatically.
