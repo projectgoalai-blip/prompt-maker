@@ -1,6 +1,9 @@
 // Background service worker for Prompt Maker extension
 // Handles extension lifecycle, storage management, and daily usage reset
 
+// Ensure this is running as a service worker
+console.log('Prompt Maker service worker starting...');
+
 // Extension installation and updates
 chrome.runtime.onInstalled.addListener(async (details) => {
     try {
@@ -316,6 +319,18 @@ chrome.runtime.onSuspend.addListener(() => {
 // Error handling for unhandled promise rejections
 self.addEventListener('unhandledrejection', (event) => {
     console.error('Unhandled promise rejection in background script:', event.reason);
+    event.preventDefault();
+});
+
+// Service worker activation
+self.addEventListener('activate', (event) => {
+    console.log('Prompt Maker service worker activated');
+});
+
+// Service worker installation
+self.addEventListener('install', (event) => {
+    console.log('Prompt Maker service worker installed');
+    self.skipWaiting();
 });
 
 // Log extension startup
