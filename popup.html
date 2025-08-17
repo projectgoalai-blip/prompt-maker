@@ -10,113 +10,208 @@
     <div class="container">
         <!-- Header -->
         <header class="header">
-            <h1 class="logo">✨ Prompt Maker</h1>
-            <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">🌙</button>
+            <h1 class="logo">✨ Prompt Maker Pro</h1>
+            <div class="header-controls">
+                <button class="btn btn-secondary" id="historyBtn" title="Prompt History">📚</button>
+                <button class="btn btn-secondary" id="favoritesBtn" title="Favorites">⭐</button>
+                <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">🌙</button>
+            </div>
         </header>
 
         <!-- Usage Counter -->
         <div class="usage-counter" id="usageCounter">
             <span>Daily prompts used: <span id="usageCount">0</span>/5</span>
+            <span>Total generated: <span id="totalCount">0</span></span>
         </div>
 
         <!-- Step 1: Input -->
         <div class="step active" id="step1">
-            <h2>What do you want to ask an AI?</h2>
-            <textarea 
-                id="promptInput" 
-                placeholder="Type your raw idea..." 
-                rows="4"
-                maxlength="2000"
-            ></textarea>
-            <div class="char-count">
-                <span id="charCount">0</span>/2000
+            <div class="main-content">
+                <div class="left-panel">
+                    <h2>What do you want to ask an AI?</h2>
+                    <textarea 
+                        id="promptInput" 
+                        placeholder="Type your raw idea..." 
+                        rows="6"
+                        maxlength="2000"
+                    ></textarea>
+                    <div class="char-count">
+                        <span id="charCount">0</span>/2000
+                    </div>
+                    
+                    <!-- Quick Templates -->
+                    <div class="quick-templates">
+                        <h3>Quick Templates</h3>
+                        <div class="template-grid">
+                            <button class="template-btn" data-template="blog">📝 Blog Post</button>
+                            <button class="template-btn" data-template="email">📧 Email</button>
+                            <button class="template-btn" data-template="social">📱 Social Media</button>
+                            <button class="template-btn" data-template="code">💻 Code Help</button>
+                            <button class="template-btn" data-template="business">💼 Business</button>
+                            <button class="template-btn" data-template="creative">🎨 Creative</button>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary" id="nextBtn" disabled>
+                        Next →
+                    </button>
+                </div>
+                
+                <div class="right-panel">
+                    <h3>Recent Prompts</h3>
+                    <div id="recentPrompts" class="recent-list">
+                        <p class="empty-state">No recent prompts yet. Create your first one!</p>
+                    </div>
+                    
+                    <h3>Favorites</h3>
+                    <div id="favoritePrompts" class="favorites-list">
+                        <p class="empty-state">No favorites yet. Star prompts you love!</p>
+                    </div>
+                </div>
             </div>
-            <button class="btn btn-primary" id="nextBtn" disabled>
-                Next →
-            </button>
         </div>
 
         <!-- Step 2: Style Selection -->
         <div class="step" id="step2">
-            <h2>How should this be explained?</h2>
-            <div class="style-options">
-                <label class="style-option" for="simple">
-                    <input type="radio" name="style" value="simple" id="simple">
-                    <div class="option-card">
-                        <div class="option-icon">👶</div>
-                        <div class="option-title">Simple</div>
-                        <div class="option-desc">Short, plain language</div>
+            <div class="main-content">
+                <div class="left-panel">
+                    <h2>How should this be explained?</h2>
+                    <div class="style-options">
+                        <label class="style-option" for="simple">
+                            <input type="radio" name="style" value="simple" id="simple">
+                            <div class="option-card">
+                                <div class="option-icon">👶</div>
+                                <div class="option-title">Simple</div>
+                                <div class="option-desc">Short, plain language</div>
+                            </div>
+                        </label>
+
+                        <label class="style-option" for="professional">
+                            <input type="radio" name="style" value="professional" id="professional">
+                            <div class="option-card">
+                                <div class="option-icon">👔</div>
+                                <div class="option-title">Professional</div>
+                                <div class="option-desc">Polished, business-like</div>
+                            </div>
+                        </label>
+
+                        <label class="style-option" for="technical">
+                            <input type="radio" name="style" value="technical" id="technical">
+                            <div class="option-card">
+                                <div class="option-icon">👩‍💻</div>
+                                <div class="option-title">Technical</div>
+                                <div class="option-desc">Structured, detailed</div>
+                            </div>
+                        </label>
+
+                        <label class="style-option" for="custom">
+                            <input type="radio" name="style" value="custom" id="custom">
+                            <div class="option-card">
+                                <div class="option-icon">✏️</div>
+                                <div class="option-title">Custom</div>
+                                <div class="option-desc">Your own style</div>
+                            </div>
+                        </label>
                     </div>
-                </label>
 
-                <label class="style-option" for="professional">
-                    <input type="radio" name="style" value="professional" id="professional">
-                    <div class="option-card">
-                        <div class="option-icon">👔</div>
-                        <div class="option-title">Professional</div>
-                        <div class="option-desc">Polished, business-like</div>
+                    <div class="custom-input" id="customInput" style="display: none;">
+                        <textarea 
+                            id="customStyle" 
+                            placeholder="Describe your preferred style..."
+                            rows="2"
+                        ></textarea>
                     </div>
-                </label>
 
-                <label class="style-option" for="technical">
-                    <input type="radio" name="style" value="technical" id="technical">
-                    <div class="option-card">
-                        <div class="option-icon">👩‍💻</div>
-                        <div class="option-title">Technical</div>
-                        <div class="option-desc">Structured, detailed</div>
+                    <div class="step-buttons">
+                        <button class="btn btn-secondary" id="backBtn1">
+                            ← Back
+                        </button>
+                        <button class="btn btn-primary" id="makePromptBtn" disabled>
+                            Make My Prompt →
+                        </button>
                     </div>
-                </label>
-
-                <label class="style-option" for="custom">
-                    <input type="radio" name="style" value="custom" id="custom">
-                    <div class="option-card">
-                        <div class="option-icon">✏️</div>
-                        <div class="option-title">Custom</div>
-                        <div class="option-desc">Your own style</div>
+                </div>
+                
+                <div class="right-panel">
+                    <h3>Preview Enhancement</h3>
+                    <div id="stylePreview" class="preview-area">
+                        <p class="preview-text">Select a style to see how your prompt will be enhanced.</p>
                     </div>
-                </label>
-            </div>
-
-            <div class="custom-input" id="customInput" style="display: none;">
-                <textarea 
-                    id="customStyle" 
-                    placeholder="Describe your preferred style..."
-                    rows="2"
-                ></textarea>
-            </div>
-
-            <div class="step-buttons">
-                <button class="btn btn-secondary" id="backBtn1">
-                    ← Back
-                </button>
-                <button class="btn btn-primary" id="makePromptBtn" disabled>
-                    Make My Prompt →
-                </button>
+                    
+                    <h3>AI Platform Integration</h3>
+                    <div class="ai-platforms">
+                        <button class="platform-btn" data-platform="chatgpt">ChatGPT</button>
+                        <button class="platform-btn" data-platform="claude">Claude</button>
+                        <button class="platform-btn" data-platform="gemini">Gemini</button>
+                        <button class="platform-btn" data-platform="midjourney">MidJourney</button>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- Step 3: Output -->
         <div class="step" id="step3">
-            <h2>Your optimized prompt (ready to copy)</h2>
-            <div class="output-container">
-                <textarea 
-                    id="outputPrompt" 
-                    readonly 
-                    rows="6"
-                ></textarea>
-                <div class="output-stats">
-                    <span id="outputLength">0 characters</span>
-                    <span id="improvement">Enhanced</span>
-                </div>
-            </div>
+            <div class="main-content">
+                <div class="left-panel">
+                    <h2>Your optimized prompt (ready to copy)</h2>
+                    <div class="output-container">
+                        <textarea 
+                            id="outputPrompt" 
+                            readonly 
+                            rows="8"
+                        ></textarea>
+                        <div class="output-stats">
+                            <span id="outputLength">0 characters</span>
+                            <span id="improvement">Enhanced</span>
+                        </div>
+                    </div>
 
-            <div class="step-buttons">
-                <button class="btn btn-secondary" id="backBtn2">
-                    ← Back
-                </button>
-                <button class="btn btn-primary" id="copyBtn">
-                    📋 Copy Prompt
-                </button>
+                    <div class="action-buttons">
+                        <button class="btn btn-secondary" id="backBtn2">
+                            ← Back
+                        </button>
+                        <button class="btn btn-primary" id="copyBtn">
+                            📋 Copy Prompt
+                        </button>
+                        <button class="btn btn-secondary" id="saveBtn">
+                            💾 Save
+                        </button>
+                        <button class="btn btn-secondary" id="favoriteBtn">
+                            ⭐ Favorite
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="right-panel">
+                    <h3>Quick Actions</h3>
+                    <div class="quick-actions">
+                        <button class="action-btn" id="sendToChatGPT">🚀 Send to ChatGPT</button>
+                        <button class="action-btn" id="sendToClaude">🚀 Send to Claude</button>
+                        <button class="action-btn" id="sendToGemini">🚀 Send to Gemini</button>
+                        <button class="action-btn" id="sharePrompt">📤 Share Prompt</button>
+                    </div>
+                    
+                    <h3>Analytics</h3>
+                    <div class="analytics-panel">
+                        <div class="stat-item">
+                            <span class="stat-label">Original words:</span>
+                            <span id="originalWords">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Enhanced words:</span>
+                            <span id="enhancedWords">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Improvement:</span>
+                            <span id="improvementPercent">0%</span>
+                        </div>
+                    </div>
+                    
+                    <h3>Similar Prompts</h3>
+                    <div id="similarPrompts" class="similar-list">
+                        <p class="empty-state">Build more prompts to see suggestions!</p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -156,6 +251,7 @@
     </div>
 
     <script src="templates.js"></script>
+    <script src="enhanced-features.js"></script>
     <script src="popup.js"></script>
 </body>
 </html>

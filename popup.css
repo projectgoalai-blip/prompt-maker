@@ -44,9 +44,11 @@ body {
 }
 
 .container {
-    width: 400px;
-    min-height: 500px;
+    width: 800px;
+    min-height: 600px;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Header */
@@ -57,6 +59,12 @@ body {
     margin-bottom: 20px;
     padding-bottom: 15px;
     border-bottom: 1px solid var(--border);
+}
+
+.header-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
 
 .logo {
@@ -87,7 +95,8 @@ body {
     border-radius: 8px;
     padding: 10px 15px;
     margin-bottom: 20px;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
     font-size: 14px;
     color: var(--text-secondary);
 }
@@ -96,10 +105,32 @@ body {
 .step {
     display: none;
     animation: fadeIn 0.3s ease;
+    flex: 1;
 }
 
 .step.active {
-    display: block;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    display: flex;
+    gap: 20px;
+    flex: 1;
+}
+
+.left-panel {
+    flex: 1;
+    min-width: 350px;
+}
+
+.right-panel {
+    flex: 1;
+    min-width: 350px;
+    background: var(--surface);
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid var(--border);
 }
 
 .step h2 {
@@ -144,7 +175,7 @@ textarea::placeholder {
 /* Style options */
 .style-options {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
     margin-bottom: 15px;
 }
@@ -400,19 +431,257 @@ textarea::placeholder {
     to { opacity: 1; transform: translate(-50%, 0); }
 }
 
+/* New Features Styling */
+
+/* Quick Templates */
+.quick-templates {
+    margin: 20px 0;
+}
+
+.quick-templates h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.template-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.template-btn {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--background);
+    color: var(--text-primary);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.template-btn:hover {
+    border-color: var(--primary-color);
+    background: rgba(99, 102, 241, 0.05);
+}
+
+/* Recent and Favorites Lists */
+.recent-list, .favorites-list, .similar-list {
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.empty-state {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-style: italic;
+}
+
+.prompt-item {
+    padding: 8px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.prompt-item:hover {
+    background: var(--surface);
+}
+
+.prompt-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.prompt-title {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+
+.prompt-preview {
+    font-size: 11px;
+    color: var(--text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Preview Area */
+.preview-area {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 20px;
+    min-height: 100px;
+    background: var(--background);
+}
+
+.preview-text {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* AI Platforms */
+.ai-platforms {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.platform-btn {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--background);
+    color: var(--text-primary);
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.platform-btn:hover {
+    border-color: var(--primary-color);
+    background: rgba(99, 102, 241, 0.05);
+}
+
+.platform-btn.selected {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.action-buttons .btn {
+    flex: 1;
+    min-width: 120px;
+}
+
+/* Quick Actions */
+.quick-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.action-btn {
+    padding: 10px 15px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--background);
+    color: var(--text-primary);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.action-btn:hover {
+    border-color: var(--primary-color);
+    background: rgba(99, 102, 241, 0.05);
+}
+
+/* Analytics Panel */
+.analytics-panel {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background: var(--background);
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 12px;
+}
+
+.stat-item:last-child {
+    margin-bottom: 0;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+}
+
+.stat-value {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* Right Panel Styling */
+.right-panel h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 5px;
+}
+
 /* Responsive adjustments */
-@media (max-width: 450px) {
+@media (max-width: 900px) {
     .container {
-        width: 100%;
-        padding: 15px;
+        width: 600px;
+    }
+    
+    .main-content {
+        flex-direction: column;
+    }
+    
+    .left-panel, .right-panel {
+        min-width: auto;
+    }
+    
+    .right-panel {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 650px) {
+    .container {
+        width: 450px;
     }
     
     .style-options {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .template-grid {
         grid-template-columns: 1fr;
     }
     
-    .pricing-options {
+    .ai-platforms {
+        grid-template-columns: 1fr;
+    }
+    
+    .action-buttons {
         flex-direction: column;
+    }
+    
+    .action-buttons .btn {
+        min-width: auto;
     }
 }
 

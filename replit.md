@@ -1,10 +1,19 @@
 # Overview
 
-Prompt Maker is a Chrome extension designed to help users write better prompts for AI tools like ChatGPT, Claude, Gemini, and MidJourney. The extension takes raw user ideas and transforms them into well-structured, detailed prompts using predefined templates and style options. Users can choose from different communication styles (Simple, Professional, Technical, or Custom) and the extension automatically enhances short prompts with additional context and detail.
+Prompt Maker Pro is a comprehensive Chrome extension designed to help users write better prompts for AI tools like ChatGPT, Claude, Gemini, and MidJourney. The extension takes raw user ideas and transforms them into well-structured, detailed prompts using predefined templates and style options. Users can choose from different communication styles (Simple, Professional, Technical, or Custom) and the extension automatically enhances short prompts with additional context and detail.
+
+## Recent Updates (August 2025)
+- **Horizontal Layout**: Changed from vertical to horizontal layout as requested by user for better space utilization
+- **Enhanced Features**: Added comprehensive feature set including prompt history, favorites, analytics, AI platform integration, and team collaboration capabilities
+- **Expanded Templates**: Added 20+ new template categories including social media, business documents, product descriptions, resumes, and creative writing
+- **AI Integration**: One-click sending to ChatGPT, Claude, Gemini, and MidJourney platforms
+- **Analytics Dashboard**: Real-time analytics showing prompt improvement metrics and usage statistics
 
 # User Preferences
 
 Preferred communication style: Simple, everyday language.
+Layout preference: Horizontal layout (changed from vertical in August 2025)
+Feature scope: Comprehensive feature set with all suggested enhancements implemented
 
 # Enhancement Ideas for Increased Usage
 
@@ -18,10 +27,12 @@ The user is interested in expanding the extension's features to attract more use
 # System Architecture
 
 ## Frontend Architecture
-- **Popup-based UI**: Uses Chrome extension popup with HTML/CSS/JavaScript for the main interface
-- **Multi-step workflow**: Three-step process (input → style selection → output) with state management
-- **Responsive design**: CSS variables for theming with light/dark mode support
+- **Popup-based UI**: Uses Chrome extension popup with HTML/CSS/JavaScript for the main interface (800px wide horizontal layout)
+- **Multi-step workflow**: Three-step process (input → style selection → output) with enhanced side panels
+- **Horizontal Layout**: Left panel for main controls, right panel for history/favorites/analytics
+- **Responsive design**: CSS variables for theming with light/dark mode support, responsive breakpoints
 - **Character counting**: Real-time input validation and character limits (2000 chars)
+- **Enhanced UI Components**: Quick templates, platform selection, analytics dashboard, action buttons
 
 ## State Management
 - **Global state object**: Centralized `promptData` object tracking original input, selected style, custom style, and enhanced output
@@ -30,9 +41,11 @@ The user is interested in expanding the extension's features to attract more use
 
 ## Template System
 - **Style-specific templates**: Predefined templates for Simple, Professional, and Technical styles
+- **Expanded Template Categories**: 20+ categories including social media, business, product descriptions, resumes, creative writing
 - **Dynamic enhancement**: Automatic prompt expansion based on length and content analysis
 - **Expansion rules**: Configurable word targets and enhancement patterns for each style
-- **Topic detection**: Pattern matching for common use cases (blog posts, technical docs, etc.)
+- **Topic detection**: Pattern matching for hundreds of use cases across all categories
+- **Quick Templates**: One-click access to popular template types in the UI
 
 ## Usage Tracking
 - **Daily limits**: Free tier limited to 5 prompts per day with automatic reset
@@ -45,9 +58,11 @@ The user is interested in expanding the extension's features to attract more use
 - **Migration handling**: Version update logic for settings preservation
 
 ## Data Storage
-- **Chrome storage API**: Local storage for user preferences, usage data, and settings
+- **Chrome storage API**: Local storage for user preferences, usage data, settings, prompt history, and favorites
 - **No external database**: Fully client-side operation for privacy
-- **Settings management**: Theme preferences, pro status, and usage statistics
+- **Settings management**: Theme preferences, pro status, usage statistics, and analytics tracking
+- **History Management**: Persistent storage of generated prompts with categorization and search
+- **Favorites System**: User-curated collection of best prompts with easy access
 
 # External Dependencies
 

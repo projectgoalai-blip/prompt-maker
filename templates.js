@@ -86,6 +86,62 @@ const PromptTemplates = {
         learn: {
             pattern: /learn|teach|tutorial|guide|how to/i,
             template: "Create a comprehensive learning guide for {topic}. Structure the content from beginner to advanced concepts, include practical exercises, common mistakes to avoid, and additional resources for further learning."
+        },
+        
+        // Social Media Content
+        social: {
+            pattern: /social|post|tweet|instagram|linkedin|facebook/i,
+            template: "Create engaging social media content about {topic}. Include attention-grabbing headlines, compelling visuals descriptions, relevant hashtags, call-to-action, and platform-specific optimizations for maximum engagement."
+        },
+        
+        twitter: {
+            pattern: /twitter|tweet/i,
+            template: "Compose a Twitter thread about {topic}. Start with a hook tweet, break down key points across multiple tweets (under 280 characters each), include relevant hashtags, and end with a strong call-to-action."
+        },
+        
+        linkedin: {
+            pattern: /linkedin|professional post/i,
+            template: "Write a professional LinkedIn post about {topic}. Include industry insights, personal experience or expertise, actionable advice, professional tone, and relevant hashtags to increase visibility in professional networks."
+        },
+        
+        // Business Content
+        business: {
+            pattern: /business|proposal|report|presentation/i,
+            template: "Create a comprehensive business document about {topic}. Include executive summary, market analysis, strategic recommendations, implementation timeline, budget considerations, and measurable success metrics."
+        },
+        
+        proposal: {
+            pattern: /proposal|pitch|offer/i,
+            template: "Draft a compelling business proposal for {topic}. Include problem statement, proposed solution, benefits and ROI, implementation plan, timeline, pricing structure, and next steps for decision-makers."
+        },
+        
+        presentation: {
+            pattern: /presentation|slides|deck/i,
+            template: "Structure a powerful presentation about {topic}. Include compelling opening, clear agenda, key talking points with supporting data, visual aids suggestions, audience engagement strategies, and strong closing with clear takeaways."
+        },
+        
+        // E-commerce and Product
+        product: {
+            pattern: /product|description|listing|ecommerce/i,
+            template: "Write compelling product descriptions for {topic}. Include key features and benefits, target audience appeal, unique selling propositions, technical specifications if relevant, customer pain points addressed, and clear call-to-action."
+        },
+        
+        // Creative Writing
+        creative: {
+            pattern: /story|poem|script|creative writing/i,
+            template: "Create engaging creative content about {topic}. Include vivid descriptions, compelling characters or elements, emotional resonance, proper narrative structure, and immersive details that captivate the audience."
+        },
+        
+        // Resume and Career
+        resume: {
+            pattern: /resume|cv|cover letter|job application/i,
+            template: "Write professional career documents for {topic}. Include relevant skills and achievements, quantifiable results, industry keywords, proper formatting guidelines, and compelling narratives that align with target opportunities."
+        },
+        
+        // Code and Technical Documentation
+        code: {
+            pattern: /code|programming|development|software/i,
+            template: "Provide comprehensive coding assistance for {topic}. Include clear code examples, best practices, error handling, documentation, testing considerations, and step-by-step implementation guidance."
         }
     },
     
